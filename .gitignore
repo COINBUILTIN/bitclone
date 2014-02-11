@@ -1,4 +1,7 @@
-*.py[cod]
+*.pyc
+.idea
+*.iml
+bitcoin*.zip
 
 # C extensions
 *.so
