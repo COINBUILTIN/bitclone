@@ -1,7 +1,7 @@
 *.pyc
 .idea
 *.iml
-tests/resources/zip
+bitcoin-1.2.0.zip
 
 # C extensions
 *.so

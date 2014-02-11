@@ -1,0 +1,56 @@
+
+// Coin Abbreviation (mast contain three letters, eg BTC)
+${bcl_abbr}=BCL
+
+// Coin Name: Bitcoin-sCrypt
+${bcl_name}=BITCLONE
+
+// Block Rate (in seconds)
+${bcl_rate_secs}=120
+
+// Initial value per block
+${bcl_init_val_block}=50
+
+// Block halving rate
+${bcl_halv_rate}=210000
+
+// Maximum money
+${bcl_max_money}=21000000
+
+// Minimum transaction fee
+${bcl_min_tx_fee}=50000
+
+// Minimum transaction relay fee
+${bcl_min_tx_relay_fee}=10000
+
+
+Paths:
+
+bitcoin/src/qt/bitcoinunits.cpp
+bitcoin/src/qt/forms/overviewpage.ui
+bitcoin/src/qt/forms/sendcoinsdialog.ui
+perl -pi -w -e 's/BTC/\$\{bcl_abbr\}/g;' bitcoin/src/qt/locale/*.ts
+bitcoin/src/version.cpp
+bitcoin/share/setup.nsi
+bitcoin/src/bitcoinrpc.cpp
+bitcoin/src/init.cpp
+bitcoin/src/main.cpp
+bitcoin/src/main.h
+bitcoin/src/net.cpp
+bitcoin/src/qt/askpassphrasedialog.cpp
+bitcoin/src/qt/bitcoin.cpp
+bitcoin/src/qt/bitcoingui.cpp
+bitcoin/src/qt/bitcoinstrings.cpp
+bitcoin/src/qt/forms/aboutdialog.ui
+bitcoin/src/qt/forms/addressbookpage.ui
+bitcoin/src/qt/forms/optionsdialog.ui
+bitcoin/src/qt/forms/overviewpage.ui
+bitcoin/src/qt/forms/rpcconsole.ui
+bitcoin/src/qt/forms/signverifymessagedialog.ui
+bitcoin/src/qt/locale/bitcoin_cs.ts
+bitcoin/src/qt/qrcodedialog.cpp
+bitcoin/src/qt/signverifymessagedialog.cpp
+bitcoin/src/rpcdump.cpp
+bitcoin/src/rpcrawtransaction.cpp
+bitcoin/src/util.cpp
+
