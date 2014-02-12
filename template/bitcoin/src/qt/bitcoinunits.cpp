@@ -51,7 +51,7 @@ QString BitcoinUnits::description(int unit)
     default: return QString("???");
     }
 }
-//a single unit (.00000001) of Bitcoin-sCrypt is called a "wander."
+//a single unit (.00000001) of ${bcl_name} is called a "wander."
 qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)

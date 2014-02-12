@@ -1,7 +1,7 @@
 #ifndef QTIPCSERVER_H
 #define QTIPCSERVER_H
 
-// Define Bitcoin-sCrypt-Qt message queue name
+// Define ${bcl_name}-Qt message queue name
 #define BITCOINURI_QUEUE_NAME "BitcoinURI"
 
 void ipcInit();

@@ -2,7 +2,7 @@
 // Coin Abbreviation (mast contain three letters, eg BTC)
 ${bcl_abbr}=BCL
 
-// Coin Name: Bitcoin-sCrypt
+// Coin Name: ${bcl_name}
 ${bcl_name}=BITCLONE
 
 // Block Rate (in seconds)

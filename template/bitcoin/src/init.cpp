@@ -83,7 +83,7 @@ void Shutdown(void* parg)
         printf("${bcl_name} exited\n\n");
         fExit = true;
 #ifndef QT_GUI
-        // ensure non UI client get's exited here, but let Bitcoin-sCrypt-Qt reach return 0; in bitcoin.cpp
+        // ensure non UI client get's exited here, but let ${bcl_name}-Qt reach return 0; in bitcoin.cpp
         exit(0);
 #endif
     }
@@ -134,7 +134,7 @@ bool AppInit(int argc, char* argv[])
 
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
-            // First part of help message is specific to Bitcoin-sCrypt server / RPC client
+            // First part of help message is specific to ${bcl_name} server / RPC client
             std::string strUsage = _("${bcl_name} version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
                   "  ${bcl_name} [options]                     " + "\n" +
@@ -290,7 +290,7 @@ std::string HelpMessage()
     return strUsage;
 }
 
-/** Initialize Bitcoin-sCrypt.
+/** Initialize ${bcl_name}.
  *  @pre Parameters should be parsed and config file should be read.
  */
 bool AppInit2()

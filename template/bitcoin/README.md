@@ -1,8 +1,8 @@
 Bitcoin - Scrypt v1.2.0-beta
 
-## HOW TO COMPILE GITIAN BUILD OF BITCOIN-SCRYPT QT CLIENT FOR WINDOWS
+## HOW TO COMPILE GITIAN BUILD OF ${bcl_name} QT CLIENT FOR WINDOWS
 
-## Amended for Bitcoin-sCrypt by Smokeasy from Gavin's Notes to getting gitian builds up and running and Onichan's Guide to compiling on Windows (https://bitcointalk.org/index.php?topic=84984.0).
+## Amended for ${bcl_name} by Smokeasy from Gavin's Notes to getting gitian builds up and running and Onichan's Guide to compiling on Windows (https://bitcointalk.org/index.php?topic=84984.0).
 
 ## REQUIREMENTS:  You need the right hardware - you need a 64-bit-capable CPU with hardware virtualization support (Intel VT-x or AMD-V). Not all modern CPUs support hardware virtualization.  You probably need to enable hardware virtualization in your machine's BIOS. You need to be running a recent version of 64-bit-Ubuntu because Gitian supports only Ubuntu hosts (so the Windows client must be cross-compiled on Ubuntu).
 
@@ -17,11 +17,11 @@ Bitcoin - Scrypt v1.2.0-beta
 
 ## Once you've got the right hardware and software we can compile the Windows client
 
-## Clone local copies of bitcoin-scrypt and gitian source-codes
+## Clone local copies of ${bcl_name} and gitian source-codes
 
 4. Enter Ubuntu terminal
 5. git clone git://github.com/Omega6/bitcoin.git bitcoin
-    (OR use mirror:  git clone git://github.com/bitcoin-scrypt/bitcoin-scrypt.git bitcoin)
+    (OR use mirror:  git clone git://github.com/${bcl_name}/${bcl_name}.git bitcoin)
 6. git clone git://github.com/devrandom/gitian-builder.git gitian
 7. mkdir gitian/inputs
 8. zip -r gitian/inputs/bitcoin-1.2.0.zip bitcoin
@@ -43,7 +43,7 @@ Bitcoin - Scrypt v1.2.0-beta
 
 19. sudo bin/make-base-vm --arch i386
 
-## Build Bitcoin-sCrypt Windows Client
+## Build ${bcl_name} Windows Client
 
 20. sudo bin/gbuild ../bitcoin/contrib/gitian-descriptors/qt-win32.yml
 21. cp build/out/qt-win32-4.7.4-gitian.zip inputs

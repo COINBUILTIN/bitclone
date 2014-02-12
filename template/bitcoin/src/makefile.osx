@@ -3,9 +3,9 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-# Mac OS X makefile for bitcoin-scrypt
+# Mac OS X makefile for ${bcl_name}
 # Originally by Laszlo Hanyecz (solar@heliacal.net)
-# Adapted for bitcoin-scrypt by Smokeasy
+# Adapted for ${bcl_name} by Smokeasy
 
 CXX=llvm-g++
 DEPSDIR=/opt/local
@@ -104,7 +104,7 @@ else
 endif
 endif
 
-all: bitcoin-scryptd
+all: ${bcl_name}d
 
 # auto-generated dependencies:
 -include obj/*.P
@@ -129,7 +129,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-bitcoin-scryptd: $(OBJS:obj/%=obj/%)
+${bcl_name}d: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -145,7 +145,7 @@ test_bitcoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) $(TESTLIBS)
 
 clean:
-	-rm -f bitcoin-scryptd test_bitcoin
+	-rm -f ${bcl_name}d test_bitcoin
 	-rm -f obj/*.o
 	-rm -f obj-test/*.o
 	-rm -f obj/*.P

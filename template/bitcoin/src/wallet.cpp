@@ -1295,7 +1295,7 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64 nVal
     if (nValue + nTransactionFee > GetBalance())
         return _("Insufficient funds");
 
-    // Parse Bitcoin-sCrypt address
+    // Parse ${bcl_name} address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address);
 

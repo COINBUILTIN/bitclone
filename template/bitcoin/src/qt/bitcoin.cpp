@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
                     // if URI could be sent to the message queue exit here
                     exit(0);
                 else
-                    // if URI could not be sent to the message queue do a normal Bitcoin-sCrypt-Qt startup
+                    // if URI could not be sent to the message queue do a normal ${bcl_name}-Qt startup
                     break;
             }
             catch (boost::interprocess::interprocess_exception &ex) {
@@ -299,7 +299,7 @@ int main(int argc, char *argv[])
                 window.setWalletModel(0);
                 guiref = 0;
             }
-            // Shutdown the core and it's threads, but don't exit Bitcoin-sCrypt-Qt here
+            // Shutdown the core and it's threads, but don't exit ${bcl_name}-Qt here
             Shutdown(NULL);
         }
         else

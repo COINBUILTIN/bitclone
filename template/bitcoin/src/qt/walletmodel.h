@@ -22,7 +22,7 @@ public:
     qint64 amount;
 };
 
-/** Interface to Bitcoin-sCrypt wallet from Qt view code. */
+/** Interface to ${bcl_name} wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT

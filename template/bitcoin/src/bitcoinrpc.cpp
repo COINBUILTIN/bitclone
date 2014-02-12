@@ -1099,7 +1099,7 @@ Value addmultisigaddress(const Array& params, bool fHelp)
     {
         const std::string& ks = keys[i].get_str();
 
-        // Case 1: Bitcoin-sCrypt address and we have full public key:
+        // Case 1: ${bcl_name} address and we have full public key:
         CBitcoinAddress address(ks);
         if (address.IsValid())
         {
@@ -2566,7 +2566,7 @@ bool HTTPAuthorized(map<string, string>& mapHeaders)
 }
 
 //
-// JSON-RPC protocol.  Bitcoin-sCrypt speaks version 1.0 for maximum compatibility,
+// JSON-RPC protocol.  ${bcl_name} speaks version 1.0 for maximum compatibility,
 // but uses JSON-RPC 1.1/2.0 standards for parts of the 1.0 standard that were
 // unspecified (HTTP errors and contents of 'error').
 //

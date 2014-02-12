@@ -1,5 +1,5 @@
 ---
-name: "bitcoin-scrypt-deps"
+name: "${bcl_name}-deps"
 suites:
 - "lucid"
 architectures:

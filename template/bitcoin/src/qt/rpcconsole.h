@@ -8,7 +8,7 @@ namespace Ui {
 }
 class ClientModel;
 
-/** Local Bitcoin-sCrypt RPC console. */
+/** Local ${bcl_name} RPC console. */
 class RPCConsole: public QDialog
 {
     Q_OBJECT

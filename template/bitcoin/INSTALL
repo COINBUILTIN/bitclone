@@ -1,9 +1,9 @@
-Building Bitcoin-sCrypt
+Building ${bcl_name}
 
-See doc/readme-qt.rst for instructions on building Bitcoin-sCrypt,
+See doc/readme-qt.rst for instructions on building ${bcl_name},
 the intended-for-end-users, nice-graphical-interface, reference
 implementation of Bitcoin.
 
-See doc/build-*.txt for instructions on building bitcoin-scryptd,
+See doc/build-*.txt for instructions on building ${bcl_name}d,
 the intended-for-services, no-graphical-interface, reference
 implementation of Bitcoin.

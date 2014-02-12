@@ -80,6 +80,6 @@ cp *.h miniupnpc/
 Bitcoin sCrypt
 -------
 DOS prompt:
-cd \bitcoin-scrypt\src
+cd \${bcl_name}\src
 mingw32-make -f makefile.mingw
-strip bitcoin-scryptd.exe
+strip ${bcl_name}d.exe

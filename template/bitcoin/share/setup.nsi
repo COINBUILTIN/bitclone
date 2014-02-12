@@ -45,7 +45,7 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile Bitcoin-sCrypt-1.2.0-win32-setup.exe
+OutFile ${bcl_name}-win32-setup.exe
 InstallDir $PROGRAMFILES\${bcl_name}
 CRCCheck on
 XPStyle on
