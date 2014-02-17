@@ -9,6 +9,8 @@ class CommonsTestCase(unittest.TestCase):
 
     def test_process_tpl_str(self):
 
+        logger.info("Testing template string processing...")
+
         self.assertEqual(Utils.process_tpl_str("Hello ${name}!", {'name': "World"}), "Hello World!")
 
         self.assertEqual(Utils.process_tpl_str("${name} ${name} ${name}", {'name': "OK"}), "OK OK OK")
@@ -17,6 +19,8 @@ class CommonsTestCase(unittest.TestCase):
             #Utils.process_tpl_str("Make my ${something}", {'name': "day"})
 
     def test_process_tpl(self):
+
+        logger.info("Testing template processing...")
 
         tpl_path = os.path.join(self.dir_path, "resources", "test_template.tpl")
         output_file_path = os.path.join(self.dir_path, "resources", "test_output_file.txt")
