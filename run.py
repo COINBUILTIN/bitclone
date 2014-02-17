@@ -1,15 +1,15 @@
 import os
 import shutil
 import subprocess
-from lib.commons import Utils
+from lib.commons import Utils, logger
 
 def main():
 
-    print "Running Bitcoin Builder..."
+    logger.info("Running Bitcoin Builder...")
 
     settings = Utils.get_config("settings.ini")
     templates = settings['templates']
-    output_path = os.path.join(settings['output_dir'], "bitcoin")
+    output_path = os.path.join(settings['output_dir'], settings['build_folder'])
     zip_dir = settings['zip_dir']
 
     if os.path.isfile(zip_dir):
@@ -19,6 +19,7 @@ def main():
         shutil.rmtree(output_path)
 
     shutil.copytree(settings['templates_dir'], output_path)
+    shutil.copytree(settings['git_dir'], os.path.join(output_path, ".git"))
 
     for template in templates:
 
@@ -31,22 +32,25 @@ def main():
             for file in files:
                 tpl_path2 = os.path.join(tpl_path, file)
                 if os.path.isfile(tpl_path2) and tpl_path2.endswith(tpl_ext):
-                    print "Processing template: " + tpl_path2
+                    logger.info("Processing template: " + tpl_path2)
                     Utils.process_tpl(tpl_path2, tpl_path2, settings)
 
         else:
 
             tpl_path = os.path.join(output_path, template)
-            print "Processing template: " + tpl_path
+            logger.info("Processing template: " + tpl_path)
             Utils.process_tpl(tpl_path, tpl_path, settings)
+
+    # rename build file to coin name
+    os.rename(os.path.join(output_path, settings['build_file']), os.path.join(output_path, settings['bcl_name'] + ".pro"))
 
     os.chdir(settings['output_dir'])
     PIPE = subprocess.PIPE
     pd = subprocess.Popen([settings['zip_bin'], '-r', zip_dir, "bitcoin"], stdout=PIPE, stderr=PIPE)
     stdout, stderr = pd.communicate()
 
-    print stdout
-    print stderr
+    logger.info(stdout)
+    logger.info(stderr)
 
 if __name__ == '__main__':
     main()

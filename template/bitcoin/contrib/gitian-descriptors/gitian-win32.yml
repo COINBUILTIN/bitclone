@@ -75,4 +75,4 @@ script: |
   cp ../../release/* ../release/
   cp ../../src/*.exe .
   makensis ../share/setup.nsi
-  cp ../share/${bcl_name}-*-win32-setup.exe $OUTDIR/
+  cp ../share/${bcl_name}-win32-setup.exe $OUTDIR/

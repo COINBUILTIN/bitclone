@@ -54,3 +54,5 @@ bitcoin/src/rpcdump.cpp
 bitcoin/src/rpcrawtransaction.cpp
 bitcoin/src/util.cpp
 
+To find files with variables:
+grep -I -H -r "${bcl_name}" . | cut -d: -f1 | uniq

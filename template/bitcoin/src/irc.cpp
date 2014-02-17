@@ -294,14 +294,14 @@ void ThreadIRCSeed2(void* parg)
         }
         
         if (fTestNet) {
-            Send(hSocket, "JOIN #bitcoin2TEST3\r");
-            Send(hSocket, "WHO #bitcoin2TEST3\r");
+            Send(hSocket, "JOIN #bitcloneTEST\r");
+            Send(hSocket, "WHO #bitcloneTEST\r");
         } else {
             // randomly join #bitcoin00-#bitcoin99
             int channel_number = GetRandInt(100);
-            channel_number = 0; // Litecoin: for now, just use one channel
-            Send(hSocket, strprintf("JOIN #bitcoin2%02d\r", channel_number).c_str());
-            Send(hSocket, strprintf("WHO #bitcoin2%02d\r", channel_number).c_str());
+            channel_number = 0; // bitclone: for now, just use one channel
+            Send(hSocket, strprintf("JOIN #${bcl_irc_channel}%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("WHO #${bcl_irc_channel}%02d\r", channel_number).c_str());
         }
 
         int64 nStart = GetTime();

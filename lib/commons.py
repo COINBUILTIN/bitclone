@@ -1,6 +1,11 @@
 import os
+import json
 import ConfigParser
-from string import Template
+import subprocess
+import logging
+import logging.config
+from logging.handlers import RotatingFileHandler
+
 
 class Utils:
 
@@ -12,9 +17,19 @@ class Utils:
             if not type(kws[v]) is list:
                 dict[v] = kws[v]
 
-        tpl = Template(str)
+        #tpl = Template(str)
+        #return tpl.safe_substitute(kws)
 
-        return tpl.safe_substitute(kws)
+        return Utils.replace_str(str, dict)
+
+    @staticmethod
+    def replace_str(s, kws):
+
+        for v in kws:
+            s = s.replace("${" + str(v) + "}", kws[v])
+
+        return s
+
 
     @staticmethod
     def process_tpl(tpl_file_path, output_file_path, kws):
@@ -51,7 +66,7 @@ class Utils:
             try:
                 settings[option] = Config.get(section, option)
                 if settings[option] == -1:
-                    print("skip: %s" % option)
+                    logger.info("skip: %s" % option)
                 elif "\n" in settings[option]:
                     parts = settings[option].split("\n")
                     new_parts = []
@@ -62,6 +77,38 @@ class Utils:
                     settings[option] = new_parts
 
             except Exception, e:
-                print("exception on %s %s!" % (option, str(e)))
+                logger.error("exception on %s %s!" % (option, str(e)))
                 settings[option] = None
         return settings
+
+    @staticmethod
+    def exec_cmd(cmd):
+
+        try:
+            logger.info(str.join(' ', cmd))
+            logger.info('stdout: {}'.format(subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)))
+        except subprocess.CalledProcessError as e:
+            logger.error(e)
+            logger.error(e.output)
+
+    @staticmethod
+    def create_icons(img_magick_path, logo_path, output_path, icons):
+
+        for icon in icons:
+            logger.info(icon)
+            icon = json.loads(icon)
+            cmd = img_magick_path + " " + logo_path + " -bordercolor white -border 0"
+            for size in icon["sizes"]:
+                cmd += "\( -clone 0 -resize %dx%d \) " % (int(size), int(size))
+
+            cmd += "-delete 0 -alpha off -colors 256 " + os.path.join(output_path, icon["path"])
+            logger.info("Icon creation CMD: " + cmd)
+
+            Utils.exec_cmd(cmd)
+
+
+settings = Utils.get_config("../settings.ini")
+# You need to set handlers references in 2.5
+logging.RotatingFileHandler = RotatingFileHandler
+logging.config.fileConfig(settings['log_config_path'])
+logger = logging
