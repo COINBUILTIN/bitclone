@@ -85,7 +85,7 @@ class Utils:
     def exec_cmd(cmd):
 
         try:
-            logger.info(str.join(' ', cmd))
+            logger.info(cmd)
             logger.info('stdout: {}'.format(subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)))
         except subprocess.CalledProcessError as e:
             logger.error(e)

@@ -22,7 +22,6 @@ def main():
     shutil.copytree(settings['git_dir'], os.path.join(output_path, ".git"))
 
     for template in templates:
-
         if "*" in template:
 
             tpl_path = os.path.join(output_path, template.split("*")[0])
@@ -34,7 +33,6 @@ def main():
                 if os.path.isfile(tpl_path2) and tpl_path2.endswith(tpl_ext):
                     logger.info("Processing template: " + tpl_path2)
                     Utils.process_tpl(tpl_path2, tpl_path2, settings)
-
         else:
 
             tpl_path = os.path.join(output_path, template)
@@ -45,12 +43,8 @@ def main():
     os.rename(os.path.join(output_path, settings['build_file']), os.path.join(output_path, settings['bcl_name'] + ".pro"))
 
     os.chdir(settings['output_dir'])
-    PIPE = subprocess.PIPE
-    pd = subprocess.Popen([settings['zip_bin'], '-r', zip_dir, "bitcoin"], stdout=PIPE, stderr=PIPE)
-    stdout, stderr = pd.communicate()
 
-    logger.info(stdout)
-    logger.info(stderr)
+    Utils.exec_cmd(settings['zip_bin'] + " -r " + zip_dir + " bitcoin")
 
 if __name__ == '__main__':
     main()
