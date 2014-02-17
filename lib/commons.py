@@ -106,9 +106,11 @@ class Utils:
 
             Utils.exec_cmd(cmd)
 
+try:
+    settings = Utils.get_config("settings.ini")
+except:
+    settings = Utils.get_config("../settings.ini")
 
-settings = Utils.get_config("../settings.ini")
-# You need to set handlers references in 2.5
 logging.RotatingFileHandler = RotatingFileHandler
 logging.config.fileConfig(settings['log_config_path'])
 logger = logging
