@@ -1,6 +1,8 @@
 import os
 import unittest
-from lib.commons import Utils, logger
+from lib.commons import Utils
+
+logger = Utils.get_logger()
 
 
 class CommonsTestCase(unittest.TestCase):
@@ -32,11 +34,34 @@ class CommonsTestCase(unittest.TestCase):
     def test_icons(self):
 
         logger.info("Testing icons...")
+
         settings = Utils.get_config("settings.ini")
         output_path = os.path.join(settings['output_dir'], settings['build_folder'])
 
-        Utils.create_icons(settings["imagemagick_dir"], os.path.join(settings["images_dir"], "bitclone_logo.png"), output_path, settings["icons"])
+        Utils.create_icons(settings["imagemagick_dir"], os.path.join(settings["images_dir"], settings["bitclone_logo"]), output_path, settings["icons"])
 
+    def test_splash(self):
+
+        logger.info("Testing splash...")
+
+        settings = Utils.get_config("settings.ini")
+        output_path = os.path.join(settings['output_dir'], settings['build_folder'])
+        splash_path = os.path.join(settings["images_dir"], settings["bitclone_splash"])
+        logo_path = os.path.join(settings["images_dir"], settings["bitclone_logo"])
+        logo_text_path = os.path.join(settings["images_dir"], settings["bitclone_logo_text"])
+        show_bitclone = True
+
+        Utils.create_splash(settings["imagemagick_dir"], 'BITCLONE', settings["version"], splash_path, logo_path, logo_text_path, show_bitclone, output_path, settings['splash_image'])
+
+    def test_images(self):
+
+        logger.info("Testing image creation...")
+
+        settings = Utils.get_config("settings.ini")
+        output_path = os.path.join(settings['output_dir'], settings['build_folder'])
+        logo_path = os.path.join(settings["images_dir"], settings["bitclone_logo"])
+
+        Utils.create_images(settings["imagemagick_dir"], settings, logo_path, output_path)
 
 if __name__ == '__main__':
     unittest.main()
